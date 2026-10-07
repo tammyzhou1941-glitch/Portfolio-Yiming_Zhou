@@ -1,4 +1,5 @@
 import React from 'react';
+import ProductMobileHome from './ProductMobileHome.jsx';
 
 export const stickerSource = (variant, file) => `/PRODUCT/Homepage/Stickers/${variant}/${encodeURIComponent(file)}.svg`;
 
@@ -19,10 +20,10 @@ function ProductSticker({sticker,onOpen}){
  </button>;
 }
 
-export default function ProductHome({onOpen}){
- return <section className="product-reference" aria-label="Selected product designs">
+export default function ProductHome({onOpen,onNavigate,onMenu}){
+ return <><ProductMobileHome onOpen={onOpen} onNavigate={onNavigate} onMenu={onMenu}/><section className="product-reference" aria-label="Selected product designs">
   <img className="product-reference-image" src="/PRODUCT/Homepage/Laptop%20Background.jpg" alt="A silver laptop with an illuminated Apple logo against a soft white background"/>
   <img className="product-sticker-heading" src={stickerSource('Colorful','Click on the sticker')} alt="Click on the sticker" draggable="false"/>
   {productStickers.map(sticker=><ProductSticker key={sticker.number} sticker={sticker} onOpen={onOpen}/>)}
- </section>;
+ </section></>;
 }

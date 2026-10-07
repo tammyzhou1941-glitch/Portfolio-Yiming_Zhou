@@ -34,8 +34,8 @@ export default function NavigationOverlay({onNavigate,onClose}){
  return <div className={`navigation-overlay ${closing?'is-closing':''}`} onClick={()=>dismiss()}>
   <button className="navigation-shade" onClick={()=>dismiss()} tabIndex={-1} aria-label="Close navigation"/>
   <section ref={panel} className="navigation-panel" role="dialog" aria-modal="true" aria-label="Navigation">
-   <img className="navigation-art" src="/PRODUCT/Homepage/Navigation%20Overlay.svg" alt="" aria-hidden="true"/>
-   <nav aria-label="Site sections">{links.map(link=>link.page?<button className="navigation-hit" key={link.label} aria-label={link.label} onClick={e=>{e.stopPropagation();dismiss(()=>onNavigate(link.page));}} style={{top:`${link.y/832*100}%`}}/>:<a className="navigation-hit" key={link.label} aria-label="Contact Yiming by email" href="mailto:tammyzhou1941@gmail.com" onClick={()=>dismiss()} style={{top:`${link.y/832*100}%`}}/>)}</nav>
+   <picture><source media="(max-width:640px)" srcSet="/PRODUCT/Mobile/Components/Navigation%20Overlap-Mobile.svg"/><img className="navigation-art" src="/PRODUCT/Homepage/Navigation%20Overlay.svg" alt="" aria-hidden="true"/></picture>
+   <nav aria-label="Site sections">{links.map(link=>link.page?<button className="navigation-hit" key={link.label} aria-label={link.label} onClick={e=>{e.stopPropagation();dismiss(()=>onNavigate(link.page));}} style={{top:`${link.y/832*100}%`,'--mobile-navigation-top':`${link.y/1079*100}%`}}/>:<a className="navigation-hit" key={link.label} aria-label="Contact Yiming by email" href="mailto:tammyzhou1941@gmail.com" onClick={()=>dismiss()} style={{top:`${link.y/832*100}%`,'--mobile-navigation-top':`${link.y/1079*100}%`}}/>)}</nav>
    <button className="navigation-close-hit" aria-label="Close navigation" onClick={()=>dismiss()}/>
   </section>
  </div>;
