@@ -481,7 +481,7 @@
 .goldenroot-ui-question-art img,.goldenroot-ui-question-art svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .goldenroot-ui-project-page{position:absolute;left:50%;width:100%;height:100dvh;overflow:hidden;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center}
 .goldenroot-ui-project-page>img{display:block;height:auto;object-fit:contain}
-.goldenroot-ui-project-page.goldenroot-ui-final-page>img{width:100%!important;height:100%;object-fit:cover;object-position:center;transform:scale(.8);transform-origin:center}
+.goldenroot-ui-project-page.goldenroot-ui-final-page>img{height:auto;max-height:calc(100dvh - 150px);object-fit:contain;object-position:center;transform:scale(.8);transform-origin:center}
 @media(max-width:640px){.goldenroot-ui-intro-window{width:88%}}
 @media(prefers-reduced-motion:reduce){.goldenroot-ui-project-background{animation:none}}
 .old-market-scroll-track{height:1260dvh}
