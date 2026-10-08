@@ -33,7 +33,9 @@ export default function useSiteVideoAudio(){
   const onScroll=()=>{lastScroll=performance.now();entries.forEach(entry=>{if(entry.active)stop(entry)})};
   const tick=now=>{
    entries.forEach(entry=>{
-    const {video}=entry,rect=video.getBoundingClientRect();
+    const {video}=entry;
+    const viewport=video.dataset.playbackViewport==='parent'?video.parentElement:video;
+    const rect=viewport.getBoundingClientRect();
     const visibleWidth=Math.max(0,Math.min(rect.right,innerWidth)-Math.max(rect.left,0));
     const visibleHeight=Math.max(0,Math.min(rect.bottom,innerHeight)-Math.max(rect.top,0));
     const area=Math.min(rect.width,innerWidth)*Math.min(rect.height,innerHeight);
