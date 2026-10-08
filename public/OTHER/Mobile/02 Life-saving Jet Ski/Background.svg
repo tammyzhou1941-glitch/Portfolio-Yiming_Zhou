@@ -1,9 +1,10 @@
 <svg width="375" height="814" viewBox="0 0 375 814" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
 <rect width="375" height="814" fill="#404A54"/>
 <rect x="-1" width="376" height="553" fill="url(#pattern0_208_3438)"/>
-<rect width="375" height="103" fill="#404A54"/>
+<rect width="375" height="190" fill="url(#mobileTopFade)"/>
 <rect x="375" y="814" width="375" height="411" transform="rotate(-180 375 814)" fill="url(#paint0_linear_208_3438)"/>
 <defs>
+<linearGradient id="mobileTopFade" x1="0" y1="0" x2="0" y2="190" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#404A54"/><stop offset="0.3" stop-color="#404A54" stop-opacity="0.95"/><stop offset="0.65" stop-color="#404A54" stop-opacity="0.5"/><stop offset="1" stop-color="#404A54" stop-opacity="0"/></linearGradient>
 <pattern id="pattern0_208_3438" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_208_3438" transform="matrix(0.000587842 0 0 0.00039952 -0.792997 -0.516979)"/>
 </pattern>
