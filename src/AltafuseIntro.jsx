@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-const pages=['P1-NoText.svg','P2.svg','P3-NoText.svg','P4-NoText.svg','P5.svg','P6.svg','P7.svg'];
+const pages=['P1-Centered.svg?v=72ebb80c9bd3','P2.svg','P3-Centered.svg?v=c9814564bb19','P4-Centered.svg?v=5eb3c8d51fa0','P5.svg','P6.svg','P7.svg'];
 const stages=[0,.6,...pages.map((_,index)=>index+1.6)];
 const pageProgress=(position,index)=>Math.min(1,Math.max(0,position-(index+.6)));
 const artworkMarks={"How Might We": [{"x1": "507", "y1": "115", "x2": "728", "y2": "115", "stroke": "#D1D1D1", "stroke-width": "10"}, {"x1": "457", "y1": "214", "x2": "662", "y2": "214", "stroke": "#61DE28", "stroke-width": "10"}], "P1": [{"x1": "48", "y1": "101", "x2": "227", "y2": "101", "stroke": "#61DE28", "stroke-width": "10"}, {"x1": "355", "y1": "101", "x2": "464", "y2": "101", "stroke": "#61DE28", "stroke-width": "10"}], "P3": [{"x1": "48", "y1": "86", "x2": "184", "y2": "86", "stroke": "#61DE28", "stroke-width": "10"}, {"x1": "640", "y1": "86", "x2": "914", "y2": "86", "stroke": "#61DE28", "stroke-width": "10"}], "P4": [{"x1": "48", "y1": "110", "x2": "133", "y2": "110", "stroke": "#61DE28", "stroke-width": "10"}], "P5": [{"x1": "25", "y1": "40", "x2": "91", "y2": "40", "stroke": "#61DE28", "stroke-width": "10"}, {"x1": "25", "y1": "438", "x2": "91", "y2": "438", "stroke": "#61DE28", "stroke-width": "10"}, {"x1": "651", "y1": "40", "x2": "717", "y2": "40", "stroke": "#61DE28", "stroke-width": "10"}, {"x1": "651", "y1": "438", "x2": "717", "y2": "438", "stroke": "#61DE28", "stroke-width": "10"}], "P6": [{"x1": "22.5", "y1": "46.0", "x2": "127.5", "y2": "46.0", "stroke": "#61DE28", "stroke-width": "10"}]};
@@ -25,7 +25,7 @@ function AnimatedArtwork({name,scrollPosition,stage,question=false}){
  const [width,height]=artworkDimensions[name];
  const fitted=['P5','P6'].includes(name);
  const asset=encodeURIComponent(name);
- return <div className={question?'altafuse-question-art':'genelec-marked-content'} style={question?{aspectRatio:`${width}/${height}`}:{width:fitted?`min(96.09375vw,calc((100dvh - 150px)*${width}/${height}))`:`max(100%,calc(100dvh*${width}/${height}))`,aspectRatio:`${width}/${height}`}}>
+ return <div className={question?'altafuse-question-art':'genelec-marked-content'} style={question?{aspectRatio:`${width}/${height}`}:{width:fitted?`min(96.09375vw,calc((100dvh - 150px)*${width}/${height}))`:`max(100%,calc(100dvh*${width}/${height}))`,aspectRatio:`${width}/${height}`,top:name==='P6'?'calc(50% + 15px)':name==='P5'?'calc(50% + 20px)':undefined}}>
   <img className="genelec-mark-background" src={`/PRODUCT/04%20Altafuse/${asset}-Background.svg`} alt=""/>
   <svg className="genelec-marker" viewBox={`0 0 ${width} ${height}`} fill="none" aria-hidden="true">
    {artworkMarks[name].map((mark,index)=><line key={index} x1={mark.x1} x2={mark.x2} y1={mark.y1} y2={mark.y2} stroke={mark.stroke} strokeWidth={mark['stroke-width']} pathLength="1" strokeDasharray="1" strokeDashoffset={1-amount} visibility={amount===0?'hidden':'visible'}/>)}

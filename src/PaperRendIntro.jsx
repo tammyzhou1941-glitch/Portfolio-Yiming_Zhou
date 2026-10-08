@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-const pages=['P1.svg?v=7a687721c8b7','P2.svg?v=2c7f11ed0c0a','P3-LeftFilled.svg?v=93f61c4f4d51','P4.svg?v=7329662635d8','P5.svg?v=16b37857e5da','P6.svg'];
+const pages=['P1-Centered.svg?v=cd648a5ff703','P2-Centered.svg?v=6b7618820878','P3-Centered.svg?v=4779b95ebcb3','P4-Centered.svg?v=fe01fc3db29f','P5-Centered.svg?v=9f0ce68759c3','P6.svg'];
 const stages=[0,.6,...pages.map((_,index)=>index+1.6)];
 const pageProgress=(position,index)=>Math.min(1,Math.max(0,position-(index+.6)));
 const artworkMarks={"How Might I": [{"x1": "420", "y1": "142", "x2": "977", "y2": "142", "stroke": "#D1D1D1", "stroke-width": "10"}, {"x1": "307", "y1": "190", "x2": "798", "y2": "190", "stroke": "#FFF990", "stroke-width": "10"}]};
@@ -78,7 +78,8 @@ export default function PaperRendIntro({onPrevious,onNext}){
     {pages.map((file,index)=>{
      const entering=pageProgress(scrollPosition,index),leaving=pageProgress(scrollPosition,index+1);
      return <div key={file} className="genelec-project-page" style={{top:`${150-100*entering-110*leaving}%`,visibility:entering===0?'hidden':'visible'}}>
-      {artworkMarks[`P${index+1}`]?<AnimatedArtwork name={`P${index+1}`} scrollPosition={scrollPosition} stage={index+1.6}/>:<img src={`/PRODUCT/03%20PaperRend/${file}`} style={[1,2,3].includes(index)?{transform:'translateY(-20px)'}:undefined} alt={`PaperRend P${index+1}`} draggable="false"/>}
+      {artworkMarks[`P${index+1}`]?<AnimatedArtwork name={`P${index+1}`} scrollPosition={scrollPosition} stage={index+1.6}/>:<img src={`/PRODUCT/03%20PaperRend/${file}`} alt={`PaperRend P${index+1}`} draggable="false"/>}
+      {index===2&&<div className="paperrend-p3-left-complete"><img src="/PRODUCT/03%20PaperRend/P3-Left-Complete.svg" alt="PaperRend full product rendering"/></div>}
      </div>;
     })}
    </div></div>

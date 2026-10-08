@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const pages=['P1-TextAdjusted.svg?v=c097111af6d1','P2-TextAdjusted.svg?v=5367ee9807da','P3.svg','P4.svg','P5.svg?v=50a206817c24','P6.svg','P7.svg','P8.svg'];
+const pages=['P1-TextAdjusted.svg?v=c097111af6d1','P2-TextAdjusted.svg?v=9fe43c2c0aed','P3.svg','P4.svg','P5.svg?v=50a206817c24','P6.svg','P7.svg?v=1fd78165e3f9','P8.svg'];
 const stages=[0,.6,...pages.map((_,index)=>index+1.6)];
 const pageProgress=(position,index)=>Math.min(1,Math.max(0,position-(index+.6)));
 
@@ -17,7 +17,7 @@ function P4VideoPage({scrollPosition}){
   const timer=setTimeout(()=>{video.currentTime=0;video.muted=false;video.volume=1;video.play().catch(()=>{if(!cancelled)setNeedsPlay(true)})},150);
   return()=>{cancelled=true;clearTimeout(timer);video.pause();video.muted=true};
  },[scrollPosition]);
- return <div className="genelec-marked-content" style={{width:'max(100%,calc(100dvh*1280/832))',aspectRatio:'1280/832'}}>
+ return <div className="genelec-marked-content" style={{width:'max(100%,calc(100dvh*1280/832))',aspectRatio:'1280/832',transform:'translate(-50%,calc(-50% + 15px)) scale(0.678699)'}}>
   <img src="/PRODUCT/02%20Genelec/P4.svg" alt="Genelec SONA P4"/>
   <div className="genelec-p4-video"><video ref={videoRef} data-playback-viewport="parent" src="/PRODUCT/02%20Genelec/37d5e7ca302db383475f9ffe3d33fb06.mp4" loop playsInline preload="auto" aria-label="Genelec SONA P4 demonstration"/>{needsPlay&&<button className="genelec-p4-play" onClick={()=>{const video=videoRef.current;video.muted=false;video.volume=1;video.play().then(()=>setNeedsPlay(false)).catch(()=>setNeedsPlay(true))}}>点击有声播放</button>}</div>
  </div>;

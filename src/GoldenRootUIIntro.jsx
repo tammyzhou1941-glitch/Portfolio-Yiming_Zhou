@@ -95,7 +95,7 @@ export default function GoldenRootUIIntro({onClose}){
     </div>
     {pages.map((file,index)=>{
      const entering=pageProgress(scrollPosition,index),leaving=pageProgress(scrollPosition,index+1);
-     return <div key={file} className={`goldenroot-ui-project-page${index===pages.length-1?' goldenroot-ui-final-page':''}`} style={{top:`${150-100*entering-110*leaving}%`,visibility:entering===0?'hidden':'visible'}}>
+     return <div key={file} className={`goldenroot-ui-project-page${index===pages.length-1?' goldenroot-ui-final-page':''}`} style={{top:[1,2,3].includes(index)?`calc(${150-100*entering-110*leaving}% + 20px)`:`${150-100*entering-110*leaving}%`,visibility:entering===0?'hidden':'visible'}}>
       {index===1?<ProductVideos scrollPosition={scrollPosition}/>:artworkMarks[`P${index+1}`]?<AnimatedArtwork name={`P${index+1}`} scrollPosition={scrollPosition} stage={index+1.6}/>:<img style={{width:`min(96.09375vw,calc((100dvh - 150px)*${artworkDimensions[`P${index+1}`][0]}/${artworkDimensions[`P${index+1}`][1]}))`}} src={`/UI&UX/GoldenRoot/${file}${file==='P4.svg'?'?v=2':''}`} alt={`GoldenRoot UI P${index+1}`} draggable="false"/>}
      </div>;
     })}

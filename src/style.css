@@ -276,6 +276,7 @@
 .dialog-uploaded-folder{display:block;width:134px;height:auto;margin:0 auto}
 @media(max-width:640px){.interface-home .uploaded-folder-button{height:23vw;padding:0}.uploaded-folder{width:16vw}.uploaded-folder-button:hover .uploaded-folder,.uploaded-folder-button:focus-visible .uploaded-folder{transform:translateY(-3px)}}
 .other-canvas{position:relative;width:100%;isolation:isolate}
+@media(min-width:641px){.other-canvas{transform:translateY(-15px)}}
 .other-canvas .other-board{width:100%;margin:0}
 .other-sketch{position:absolute;display:block;height:auto;user-select:none;transform-origin:center;transition:transform 220ms ease}
 .other-sketch:hover,.other-sketch:focus-visible{transform:scale(1.03)}
@@ -315,13 +316,14 @@
 .jet-ski-page{position:absolute;left:50%;width:100%;height:100dvh;transform:translate(-50%,-50%);display:flex;align-items:center;justify-content:center;background:#fff}
 .jet-ski-page img{display:block;height:auto;max-height:calc(100dvh - 150px);object-fit:contain}
 .jet-ski-page.other-full-page img{width:100%!important;height:100%;max-height:none;object-fit:cover;object-position:center}
+.jet-ski-page.photograph-page img{width:84%!important;height:84%;max-height:none;object-fit:contain;object-position:center}
 @media(max-width:640px){.jet-ski-detail .spaceship-detail-intro{top:145px;width:80%}}
 @keyframes spaceship-enter{from{transform:translateY(100dvh)}to{transform:translateY(0)}}
 @media(max-width:640px){.spaceship-detail-intro{width:80%;left:5%;bottom:10%}}
 @media(prefers-reduced-motion:reduce){.spaceship-detail-scene{animation:none}}
 @media(max-width:640px){.other-canvas{width:100%;margin:0}.other-canvas .other-board{width:100%;margin:0}}
 .about-uploaded-canvas{position:relative;aspect-ratio:1280/832;width:100%;margin-top:-100px}
-.about-uploaded-card{position:absolute;display:block;height:auto;user-select:none}
+.about-uploaded-card{position:absolute;display:block;height:auto;user-select:none;transform:scale(.855);transform-origin:center}
 @media(max-width:640px){.about-uploaded-canvas{margin-top:0}}
 .about-card-image{display:block;width:100%;height:auto}
 .about-know-more{position:absolute;left:33.12%;top:87.17%;width:29.87%;padding:0;background:transparent;line-height:0;border-radius:3px}
@@ -420,6 +422,8 @@
 .genelec-mark-background{z-index:0}.genelec-marker{z-index:1}.genelec-mark-foreground{z-index:2}
 .paperrend-scroll-track{height:760dvh}
 .paperrend-intro-window{width:51.796875%}
+.paperrend-p3-left-complete{position:absolute;left:0;top:0;width:50%;height:100%;padding:90px 12px 40px;overflow:hidden}
+.genelec-project-page .paperrend-p3-left-complete img{width:100%;height:100%;object-fit:contain}
 .paperrend-question-art{position:relative;width:100%}
 .paperrend-question-art img,.paperrend-question-art svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 @media(max-width:640px){.paperrend-intro-window{width:88%}}
@@ -434,7 +438,7 @@
 .goldenroot-question-art img,.goldenroot-question-art svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .genelec-project-page img.goldenroot-p2{position:absolute;left:50%;top:50%;width:min(86.40625vw,calc((100dvh - 150px)*1106/772));height:auto;transform:translate(-50%,-50%);object-fit:contain}
 @media(max-width:640px){.goldenroot-intro-window{width:88%}}
-.goldenroot-p5-videos{position:absolute;left:50%;top:50%;width:max(100%,calc(100dvh*1230/772));aspect-ratio:1230/772;transform:translate(-50%,-50%) scale(.81)}
+.goldenroot-p5-videos{position:absolute;left:50%;top:calc(50% + 20px);width:max(100%,calc(100dvh*1230/772));aspect-ratio:1230/772;transform:translate(-50%,-50%) scale(.69255)}
 .goldenroot-p5-video-frame{position:absolute;overflow:hidden;background:#fff}
 .goldenroot-p5-video-frame video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#fff;border:0}
 .goldenroot-storage-video video{transform:scale(1.045);transform-origin:center}

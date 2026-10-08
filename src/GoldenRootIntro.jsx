@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-const pages=['P1.svg','P2.svg','P3.svg','P4.svg','P5.svg','P6.svg','P7-Adjusted.svg','P8.svg'];
+const pages=['P1.svg','P2.svg','P3.svg','P4-Centered.svg?v=1a2ef7ec0099','P5.svg','P6.svg','P7-Centered.svg?v=d5b9a666e4bc','P8-Centered.svg?v=880700bd4bd7'];
 const stages=[0,.6,...pages.map((_,index)=>index+1.6)];
 const pageProgress=(position,index)=>Math.min(1,Math.max(0,position-(index+.6)));
 const artworkMarks={"How Might I": [{"x1": "405", "y1": "142", "x2": "756", "y2": "142", "stroke": "#D1D1D1", "stroke-width": "10"}, {"x1": "309", "y1": "190", "x2": "861", "y2": "190", "stroke": "#757C2E", "stroke-width": "10"}], "P3": [{"x1": "25", "y1": "38", "x2": "132", "y2": "38", "stroke": "#757C2E", "stroke-width": "10"}]};
@@ -44,7 +44,7 @@ function AnimatedArtwork({name,scrollPosition,stage,question=false}){
  },[scrollPosition,stage]);
  const [width,height]=artworkDimensions[name];
  const asset=encodeURIComponent(name);
- return <div className={question?'goldenroot-question-art':'genelec-marked-content'} style={question?{aspectRatio:`${width}/${height}`}:{width:name==='P3'?`min(100vw,calc((100dvh - 150px)*${width}/${height}))`:`max(100%,calc(100dvh*${width}/${height}))`,aspectRatio:`${width}/${height}`}}>
+ return <div className={question?'goldenroot-question-art':'genelec-marked-content'} style={question?{aspectRatio:`${width}/${height}`}:{width:name==='P3'?`min(100vw,calc((100dvh - 150px)*${width}/${height}))`:`max(100%,calc(100dvh*${width}/${height}))`,aspectRatio:`${width}/${height}`,top:name==='P3'?'calc(50% + 15px)':undefined}}>
   <img className="genelec-mark-background" src={`/PRODUCT/05%20GoldenRoot/${asset}-Background.svg`} alt=""/>
   <svg className="genelec-marker" viewBox={`0 0 ${width} ${height}`} fill="none" aria-hidden="true">
    {artworkMarks[name].map((mark,index)=><line key={index} x1={mark.x1} x2={mark.x2} y1={mark.y1} y2={mark.y2} stroke={mark.stroke} strokeWidth={mark['stroke-width']} pathLength="1" strokeDasharray="1" strokeDashoffset={1-amount} visibility={amount===0?'hidden':'visible'}/>)}

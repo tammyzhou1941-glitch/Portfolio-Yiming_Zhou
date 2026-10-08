@@ -79,7 +79,7 @@ export default function PeachBlossomIntro({onPrevious,onNext}){
     {pages.map((file,index)=>{
      const entering=pageProgress(scrollPosition,index),leaving=pageProgress(scrollPosition,index+1);
      return <div key={file} className="peachblossom-project-page" style={{top:`${150-100*entering-110*leaving}%`,visibility:entering===0?'hidden':'visible'}}>
-      {artworkMarks[`P${index+1}`]?<AnimatedArtwork name={`P${index+1}`} scrollPosition={scrollPosition} stage={index+1.6}/>:<img style={{width:`min(96.09375vw,calc((100dvh - 150px)*${pageDimensions[`P${index+1}`][0]}/${pageDimensions[`P${index+1}`][1]}))`}} src={`/PRODUCT/06%20Saint%20Miracle-Little%20Peach%20Blossom/${file}`} alt={`Peach Blossom P${index+1}`} draggable="false"/>}
+      {artworkMarks[`P${index+1}`]?<AnimatedArtwork name={`P${index+1}`} scrollPosition={scrollPosition} stage={index+1.6}/>:<img style={{width:`min(96.09375vw,calc((100dvh - 150px)*${pageDimensions[`P${index+1}`][0]}/${pageDimensions[`P${index+1}`][1]}))`,transform:index===0?'translateY(15px)':[1,3,4,5,6,7,8,9].includes(index)?'translateY(20px)':undefined}} src={`/PRODUCT/06%20Saint%20Miracle-Little%20Peach%20Blossom/${file}`} alt={`Peach Blossom P${index+1}`} draggable="false"/>}
      </div>;
     })}
    </div></div>
