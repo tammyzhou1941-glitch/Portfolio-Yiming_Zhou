@@ -17,7 +17,7 @@ export default function AboutHome(){
    {card.profile?<img className="about-card-image" src={`/ABOUT%20ME/${encodeURIComponent(profileFlipped?card.back:card.file)}`} alt={card.label} draggable="false"/>:<div className="about-card-rotator">
     <div className="about-card-front" aria-hidden={!!flipped[card.file]} inert={!!flipped[card.file]}>
      <img className="about-card-image" src={`/ABOUT%20ME/${encodeURIComponent(card.file)}`} alt={`${card.label} front`} draggable="false"/>
-     <button className="about-know-more" aria-label={`To know more about ${card.label}`} onClick={reveal}><img src="/ABOUT%20ME/To%20Know%20More.svg" alt="To know more"/></button>
+     <button className="about-know-more" aria-label={`To know more about ${card.label}`} onClick={reveal}><img src="/ABOUT%20ME/To%20Know%20More-Red.svg" alt="To know more"/></button>
     </div>
     <button className="about-card-back about-card-back-button" aria-label={`Flip ${card.label} back to front`} aria-hidden={!flipped[card.file]} inert={!flipped[card.file]} onClick={()=>returnToFront(card.file)}><img className="about-card-image" src={`/ABOUT%20ME/${encodeURIComponent(card.back)}`} alt={`${card.label} back`} draggable="false"/></button>
    </div>}

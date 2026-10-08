@@ -4,8 +4,62 @@
 .about-mobile-home{display:none}
 .kasvu-mobile-detail{position:fixed;inset:0;z-index:20;background:#fff}
 .kasvu-mobile-scroll{position:absolute;inset:0;overflow-y:auto;overscroll-behavior:contain;padding-bottom:80px}
+.kasvu-mobile-scroll.kasvu-mobile-paged{padding:0;scroll-snap-type:y mandatory;scrollbar-width:none}
+.kasvu-mobile-screen{height:100dvh;position:relative;display:flex;align-items:center;justify-content:center;padding:calc(27.467vw + 12px) 0 16px;scroll-snap-align:start;scroll-snap-stop:always;background:#fff;overflow:hidden}
+.kasvu-mobile-cover{background:url('/PRODUCT/Mobile/01%20KasvuNest/Grind%20Background.svg') top center/100% auto}
+.genelec-mobile-cover{background-image:url('/PRODUCT/Mobile/02%20Genelec/Grind%20Background.svg')}
+.genelec-mobile-cover>img{width:min(88.8vw,calc((100dvh - 27.467vw - 28px)*333/548))}
+.genelec-mobile-art{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
+.genelec-mobile-art>svg{display:block;width:100%;height:100%;object-fit:contain}
+.genelec-mobile-art>.genelec-mobile-final-image{display:block;width:100%;height:100%;object-fit:cover}
+.kasvu-mobile-screen.genelec-mobile-full-screen{padding:0}
+.kasvu-mobile-cover>img{display:block;width:min(88.533vw,calc((100dvh - 27.467vw - 28px)*332/573));height:auto;transform:translateY(100dvh);will-change:transform}
+.kasvu-mobile-cover>img.intro-ready{animation:kasvu-mobile-intro-enter 850ms cubic-bezier(.22,1,.36,1) both}
+.paperrend-mobile-cover>img{width:min(88.533vw,calc((100dvh - 27.467vw - 28px)*332/568))}
+.interface-mobile-project-cover{background:#fff;align-items:flex-end;padding-bottom:50px}
+.app:has(.interface-mobile-detail)>.header{display:none}
+.app:has(.other-mobile-detail)>.header{display:none}
+.other-mobile-detail-art{display:block;width:100%;height:100%;object-fit:contain}
+.other-mobile-detail-photo{object-fit:cover}
+.interface-mobile-project-cover>.interface-mobile-cover-background{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:none;animation:kasvu-mobile-intro-enter 500ms cubic-bezier(.22,1,.36,1) both}
+.interface-mobile-project-cover>img.intro-ready{position:relative;z-index:1;animation-delay:350ms}
+.kasvu-mobile-page-art{position:relative;width:min(100vw,calc((100dvh - 27.467vw - 28px)*375/814))}
+.kasvu-mobile-page-art>img{display:block;width:100%;height:auto}
+.kasvu-mobile-research-box{width:88.267vw}
+.kasvu-flexible-track{height:300dvh;position:relative;background:#fff;scroll-snap-align:start}
+.kasvu-flexible-track.kasvu-flexible-automatic{height:100dvh;scroll-snap-stop:always}
+.kasvu-flexible-snap{position:absolute;left:0;width:1px;height:1px;scroll-snap-align:start;scroll-snap-stop:always;pointer-events:none}
+.kasvu-flexible-stage{position:sticky;top:0;height:100dvh;overflow:hidden;display:flex;align-items:center;justify-content:center;padding:calc(27.467vw + 12px) 0 16px}
+.kasvu-flexible-stack{width:min(88.267vw,calc((100dvh - 27.467vw - 28px)*331/650));display:flex;flex-direction:column;gap:12px}
+.kasvu-flexible-heading{width:63.444%;margin:0 auto;transform:translateY(-20px)}
+.kasvu-flexible-heading>img{display:block;width:100%;height:auto}
+.kasvu-flexible-group{position:relative;width:100%;aspect-ratio:331/185}
+.kasvu-flexible-video-frame{width:100%;height:100%;overflow:hidden;background:#fff}
+.kasvu-flexible-group video{display:block;width:100%;height:100%;object-fit:cover;object-position:center;background:#fff}
+.kasvu-flexible-label{position:absolute;left:2.72%;top:-6.76%;height:auto;z-index:2}
+.kasvu-mobile-research-pair{display:flex;flex-direction:column;gap:12px;width:min(88.267vw,calc((100dvh - 27.467vw - 40px)*331/574))}
+.kasvu-mobile-page-art>video{position:absolute;display:block;object-fit:cover;background:#fff}
+.kasvu-mobile-video-frame{position:absolute;overflow:hidden;background:#fff}
+.kasvu-mobile-video-frame video{display:block;width:100%;height:100%;object-fit:cover;object-position:center}
+.kasvu-mobile-video-frame.video-enlarged video{transform:scale(1.15);transform-origin:center}
+.kasvu-mobile-enable-sound{position:absolute;z-index:3;left:50%;bottom:8%;transform:translateX(-50%);padding:10px 18px;border-radius:24px;background:#000b;color:white;font-size:14px}
+.site-video-enable-sound{position:fixed;z-index:110;padding:10px 18px;border-radius:24px;background:#000b;color:#fff;font-size:14px}
+.genelec-p4-play,.kasvu-assembly-play,.kasvu-lifestyle-play,.kasvu-mobile-enable-sound{display:none!important}
+.kasvu-mobile-photo-screen{padding:0}
+.kasvu-mobile-screen.kasvu-mobile-p6-screen{padding:0}
+.kasvu-mobile-screen.kasvu-mobile-p7-screen{padding-bottom:15px;clip-path:inset(0 0 15px 0)}
+.kasvu-mobile-p6-screen .kasvu-mobile-page-art>img{width:100%;height:100%}
+.kasvu-mobile-photo-screen .kasvu-mobile-page-art{width:100%;height:100%}
+.kasvu-mobile-photo-screen .kasvu-mobile-page-art>img{width:100%;height:100%;object-fit:cover}
+@media(prefers-reduced-motion:reduce){.kasvu-mobile-cover>img.intro-ready{animation:none;transform:none}}
 .kasvu-mobile-intro{padding:40vw 5.733vw 21.333vw;background:url('/PRODUCT/Mobile/01%20KasvuNest/Grind%20Background.svg') top center/100% auto}
 .kasvu-mobile-intro img{display:block;width:100%;height:auto}
+.kasvu-mobile-intro img{animation:kasvu-mobile-intro-enter 650ms cubic-bezier(.22,1,.36,1) both}
+@keyframes kasvu-mobile-intro-enter{from{transform:translateY(100dvh)}to{transform:translateY(0)}}
+.kasvu-mobile-marked-art{position:relative;width:100%}
+.kasvu-mobile-marked-art>svg{position:absolute;inset:0;width:100%;height:100%}
+.kasvu-mobile-marked-art>img{position:relative;display:block;width:100%;height:auto}
+@media(prefers-reduced-motion:reduce){.kasvu-mobile-intro img{animation:none}}
 .kasvu-mobile-art{width:88.267%;margin:0 auto 4vw}
 .kasvu-mobile-art img,.kasvu-mobile-flexible>img,.kasvu-mobile-composition>img,.kasvu-mobile-ideation>img{display:block;width:100%;height:auto}
 .kasvu-mobile-research{padding:9.333vw 0 16vw}
@@ -26,13 +80,22 @@
 .project-exit-last .kasvu-mobile-detail{animation:project-exit-last 400ms ease-in both}
 @media(prefers-reduced-motion:reduce){.kasvu-mobile-reveal{transition:none}.product-project-transition .kasvu-mobile-detail{animation:none}}
 @media(max-width:640px){
- .about-mobile-home{display:block;position:relative;min-height:217.067vw;background:url('/ABOUT%20ME/Mobile/Components/background.svg?v=b3965266bd9b') top center/100% auto repeat-y;overflow:hidden}
+ .about-mobile-home{display:block;position:relative;min-height:217.067vw;background:url('/PRODUCT/Mobile/Grind%20Background.svg') top center/100% auto repeat-y;overflow:hidden}
  .about-mobile-home~.about-uploaded-canvas{display:none}
  .about-mobile-card{position:fixed;left:50%;top:calc((100dvh + 27.467vw)/2);transform:translate(-50%,-50%);display:block;width:min(82.133vw,calc((100dvh - 27.467vw - 32px - env(safe-area-inset-bottom,0px))*308/608));aspect-ratio:308/608;margin:0;padding:0;background:transparent;perspective:1400px}
  .about-mobile-card-turn{position:absolute;inset:0;display:block;transform-style:preserve-3d;transition:transform 650ms cubic-bezier(.22,1,.36,1)}
  .about-mobile-card.is-flipped .about-mobile-card-turn{transform:rotateY(180deg)}
  .about-mobile-card-front,.about-mobile-card-back{position:absolute;inset:0;display:block;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden}
  .about-mobile-card-front{transform:translateZ(.1px)}
+ .about-mobile-front-art{display:block;width:100%;height:100%}
+ .about-mobile-more-pulse{position:absolute;inset:0;display:block;width:100%;height:100%;pointer-events:none}
+ .about-mobile-portrait{position:absolute;left:6.25%;top:17.311%;width:42.370%;height:32.484%;overflow:hidden}
+ .about-mobile-portrait>img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:contain}
+ .about-mobile-card:not(.is-turning) .about-mobile-card-turn{transform:none;transform-style:flat;transition:none}
+ .about-mobile-card:not(.is-turning) .about-mobile-card-front,.about-mobile-card:not(.is-turning) .about-mobile-card-back{transform:none}
+ .about-mobile-card:not(.is-turning):not(.is-flipped) .about-mobile-card-back,.about-mobile-card:not(.is-turning).is-flipped .about-mobile-card-front{visibility:hidden}
+ .about-mobile-card.is-turning.is-flipped .about-mobile-card-turn{animation:about-mobile-flip-forward 650ms cubic-bezier(.22,1,.36,1) both;transition:none}
+ .about-mobile-card.is-turning:not(.is-flipped) .about-mobile-card-turn{animation:about-mobile-flip-back 650ms cubic-bezier(.22,1,.36,1) both;transition:none}
  .about-mobile-card-back{transform:rotateY(180deg) translateZ(.1px)}
  .about-mobile-go-home{display:block;width:40.267vw;height:10.667vw;padding:0;margin:3.733vw auto 6.4vw;background:transparent}
  .about-mobile-go-home img{display:block;width:100%;height:100%}
@@ -87,7 +150,10 @@
  .product-mobile-edge-top{top:0;height:23.2vw;mask-image:linear-gradient(to bottom,#000 85%,transparent);-webkit-mask-image:linear-gradient(to bottom,#000 85%,transparent)}
  .product-mobile-edge-bottom{bottom:0;height:calc(8.533vw + env(safe-area-inset-bottom,0px) + 30px);backdrop-filter:blur(1.6px);-webkit-backdrop-filter:blur(1.6px);mask-image:linear-gradient(to bottom,transparent,#000 30%);-webkit-mask-image:linear-gradient(to bottom,transparent,#000 30%)}
  .app[data-product-home="false"] .product-mobile-home:not(.interface-mobile-home):not(.other-mobile-home) :is(.product-mobile-banner,.product-mobile-edge,.product-mobile-header){display:none}
- .product-mobile-banner>div{display:flex;width:200%;animation:mobile-stamp-banner 18s linear infinite}
+ .product-mobile-banner>div{display:flex;width:max-content;animation:mobile-stamp-banner 24s linear infinite}
+ .mobile-banner-group{display:flex;flex-shrink:0;white-space:nowrap;align-items:center}
+ .mobile-banner-phrase{display:inline-flex;flex-shrink:0;align-items:center;font:2.667vw/4.267vw 'Times New Roman',serif;white-space:nowrap}
+ .mobile-banner-separator{padding:0 6px}
  .product-mobile-banner img{width:50%;height:auto;flex-shrink:0}
  .product-mobile-home:not(.interface-mobile-home):not(.other-mobile-home){min-height:0}
  .product-mobile-stamps{display:grid;grid-template-columns:repeat(2,37.067vw);column-gap:9.6vw;row-gap:20vw;padding-top:40vw;padding-left:8.267vw;padding-bottom:calc(25.6vw + 20px + env(safe-area-inset-bottom,0px))}
@@ -236,6 +302,10 @@
 :is(.other-slide-next,.other-slide-last) :is(.spaceship-detail-background,.spaceship-detail-intro){animation:none}
 @media(prefers-reduced-motion:reduce){:is(.other-slide-next,.other-slide-last) .spaceship-detail-scene{animation:none}}
 .jet-ski-detail .spaceship-detail-intro{left:5%;top:12.98%;bottom:auto;width:37.421875%}
+.jet-ski-detail.spaceship-detail-sequential .spaceship-detail-intro{animation:jet-ski-intro-enter 550ms cubic-bezier(.22,1,.36,1) 650ms both}
+.other-mobile-jet-ski .interface-mobile-project-cover>img.intro-ready{animation-name:jet-ski-intro-enter}
+@keyframes jet-ski-intro-enter{from{transform:translateY(32px);opacity:0}to{transform:translateY(0);opacity:1}}
+@media(prefers-reduced-motion:reduce){.jet-ski-detail.spaceship-detail-sequential .spaceship-detail-intro{animation:none}}
 .chair-detail .spaceship-detail-intro{left:5%;top:auto;bottom:7.93%;width:37.5%}
 .jet-ski-detail{background:#fff}
 .jet-ski-scroll-track{height:400dvh}
@@ -253,7 +323,9 @@
 @media(max-width:640px){.about-uploaded-canvas{margin-top:0}}
 .about-card-image{display:block;width:100%;height:auto}
 .about-know-more{position:absolute;left:33.12%;top:87.17%;width:29.87%;padding:0;background:transparent;line-height:0;border-radius:3px}
-.about-know-more img{display:block;width:100%;height:auto}
+.about-know-more img{display:block;width:100%;height:auto;transform-origin:center;animation:about-know-more-pulse 1800ms ease-in-out infinite}
+@keyframes about-know-more-pulse{0%,100%{transform:scale(.95)}50%{transform:scale(1.05)}}
+@media(prefers-reduced-motion:reduce){.about-know-more img{animation:none}}
 .about-know-more:hover{transform:translateX(2px)}
 .about-flip-card{perspective:1200px}
 .about-card-rotator{position:relative;transform-style:preserve-3d;transition:transform 800ms cubic-bezier(.4,0,.2,1)}
@@ -456,3 +528,4 @@
 .kasvu-p2-assembly{position:absolute;left:calc(622/1230*100%);top:0;width:calc(608/1230*100%);height:calc(378/772*100%);z-index:2;display:block;object-fit:cover;object-position:center;background:#fff;border:0}
 .kasvu-assembly-play{position:absolute;left:calc(926/1230*100%);top:calc(189/772*100%);transform:translate(-50%,-50%);z-index:3;padding:12px 18px;border:1px solid #fff;border-radius:24px;background:#000c;color:#fff;cursor:pointer}
 .kasvu-lifestyle-play{position:absolute;left:63.125%;top:calc(296/832*100%);transform:translate(-50%,-50%);z-index:3;padding:12px 18px;border:1px solid #fff;border-radius:24px;background:#000c;color:#fff;cursor:pointer}
+@keyframes about-mobile-flip-forward{from{transform:rotateY(0)}to{transform:rotateY(180deg)}} @keyframes about-mobile-flip-back{from{transform:rotateY(180deg)}to{transform:rotateY(0)}}

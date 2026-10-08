@@ -14,7 +14,7 @@ export const productStickers = [
 ];
 
 function ProductSticker({sticker,onOpen}){
- return <button className="product-sticker" style={{left:`${sticker.left}%`,top:`${sticker.top}%`,width:`${sticker.width}%`,'--sticker-tilt':`${sticker.tilt||0}deg`,'--sticker-scale':sticker.scale||1}} aria-label={`Explore ${sticker.name}`} onClick={()=>onOpen(sticker)}>
+ return <button className="product-sticker" style={{left:`${sticker.left}%`,top:`${sticker.top}%`,width:`${sticker.width}%`,'--sticker-tilt':`${sticker.tilt||0}deg`,'--sticker-scale':sticker.scale||1,filter:sticker.file==='Altafuse'?'none':undefined}} aria-label={`Explore ${sticker.name}`} onClick={()=>onOpen(sticker)}>
   <img className="sticker-monochrome" src={stickerSource('Black&White',sticker.file)} alt="" aria-hidden="true" draggable="false"/>
   <img className="sticker-color" src={stickerSource('Colorful',sticker.file)} alt="" aria-hidden="true" draggable="false"/>
  </button>;

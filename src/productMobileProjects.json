@@ -1,0 +1,20 @@
+{
+  "Altafuse": {
+    "folder": "04 Altafuse",
+    "title": "Altafuse",
+    "count": 7,
+    "introRatio": 0.5862676056338029
+  },
+  "GoldenRoot": {
+    "folder": "05 GoldenRoot",
+    "title": "GoldenRoot",
+    "count": 7,
+    "introRatio": 0.6058394160583942
+  },
+  "SM-Little Peach Blossom": {
+    "folder": "06 PeachBlossom",
+    "title": "Peach Blossom",
+    "count": 10,
+    "introRatio": 0.604735883424408
+  }
+}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import JetSkiDetail from './JetSkiDetail.jsx';
 import OtherMobileHome from './OtherMobileHome.jsx';
+import OtherMobileDetail from './OtherMobileDetail.jsx';
 
 const jetSkiBackground='/OTHER/Life-saving%20Jet%20Ski/Background.svg?v=601705c4b11c';
 const otherProjectOrder=['Spaceship','Life-saving jet ski','Chair','Photography','Lamp'];
@@ -17,6 +18,8 @@ const sketches = [
 ];
 
 export default function OtherHome({onNavigate,onMenu,onDetailChange}){
+ const [mobileViewport,setMobileViewport]=useState(()=>window.matchMedia('(max-width:640px)').matches);
+ useEffect(()=>{const query=window.matchMedia('(max-width:640px)');const update=()=>setMobileViewport(query.matches);query.addEventListener('change',update);return()=>query.removeEventListener('change',update)},[]);
  const [openedProject,setOpenedProject]=useState(null);
  const [slideDirection,setSlideDirection]=useState(0);
  useEffect(()=>{onDetailChange(Boolean(openedProject));return()=>onDetailChange(false)},[Boolean(openedProject),onDetailChange]);
@@ -43,7 +46,8 @@ export default function OtherHome({onNavigate,onMenu,onDetailChange}){
    return otherProjectOrder.includes(sketch.file)?<button className="other-sketch other-sketch-button" key={sketch.file} style={style} onClick={()=>{setSlideDirection(0);setOpenedProject(sketch.file)}} aria-label={`Open ${sketch.alt}`}>{image}</button>:<img className="other-sketch" key={sketch.file} src={`/OTHER/Homepage/Sketches/${encodeURIComponent(sketch.file)}.svg`} alt={sketch.alt} draggable="false" style={style}/>;
   })}
  </div>
- {openedProject&&<>
+ {openedProject&&mobileViewport&&<OtherMobileDetail key={openedProject} project={openedProject} onNavigate={onNavigate} onMenu={onMenu}/>}
+ {openedProject&&!mobileViewport&&<>
   <section key={openedProject} className={`spaceship-detail spaceship-detail-sequential ${['Life-saving jet ski','Chair'].includes(openedProject)?(openedProject==='Chair'?'chair-detail':'jet-ski-detail'):''} ${slideDirection===1?'other-slide-next':slideDirection===-1?'other-slide-last':''}`} role="dialog" aria-modal="false" aria-label={openedProject}>
    {openedProject==='Life-saving jet ski'?<JetSkiDetail background={jetSkiBackground}/>:openedProject==='Chair'?<JetSkiDetail background="/OTHER/RelaxChair/Background.svg" folder="RelaxChair" title="Chair" pages={chairPages} fillLastPage/>:openedProject==='Photography'?<JetSkiDetail background="/OTHER/Photograph/Background.svg" folder="Photograph" title="Photograph" pages={photographPages} showIntro={false} fillAllPages/>:openedProject==='Lamp'?<JetSkiDetail background="/OTHER/Light/Background.svg" folder="Light" title="Light" pages={lightPages} fillLastPage/>:<div className="spaceship-detail-scene">
     {(openedProject==='Spaceship'||jetSkiBackground)&&<img className="spaceship-detail-background" src={openedProject==='Spaceship'?'/OTHER/Spaceship/Background.svg?v=9f4baa0656ca':jetSkiBackground} alt={openedProject==='Spaceship'?'Racing spaceship flying above a planet':'Rescue jet ski on the sea'}/>}

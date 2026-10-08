@@ -141,7 +141,7 @@ export default function KasvuNestIntro({onPrevious,onNext}){
     </div>
     <div className="kasvu-p3" style={{top:`${150-100*p3Progress}%`,visibility:p3Progress===0?'hidden':'visible'}}>
      <div className="kasvu-p3-content">
-      <img className="kasvu-how-base" src="/PRODUCT/01%20KasvuNest/P3.svg" alt="KasvuNest P3"/>
+      <img className="kasvu-how-base" src="/PRODUCT/01%20KasvuNest/P3-MaterialUpdated.svg?v=a19408591193" alt="KasvuNest P3"/>
       <video ref={lifestyleVideo} className="kasvu-p3-lifestyle" src={`/PRODUCT/01%20KasvuNest/Video/${encodeURIComponent('生活化场景.mp4')}`} loop playsInline controls preload="auto" aria-label="KasvuNest everyday living scene"/>
       {lifestyleNeedsPlay&&<button className="kasvu-lifestyle-play" onClick={()=>{const video=lifestyleVideo.current;video.muted=false;video.play().then(()=>setLifestyleNeedsPlay(false)).catch(()=>setLifestyleNeedsPlay(true))}}>点击有声播放</button>}
      </div>

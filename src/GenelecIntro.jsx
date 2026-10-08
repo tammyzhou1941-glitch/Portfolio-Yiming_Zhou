@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-const pages=['P1-TextAdjusted.svg','P2-TextAdjusted.svg','P3.svg','P4.svg','P5.svg','P6.svg','P7.svg','P8.svg'];
+const pages=['P1-TextAdjusted.svg?v=2931bfcd2123','P2-TextAdjusted.svg?v=4a15365d33e5','P3.svg','P4.svg','P5.svg?v=50a206817c24','P6.svg','P7.svg','P8.svg'];
 const stages=[0,.6,...pages.map((_,index)=>index+1.6)];
 const pageProgress=(position,index)=>Math.min(1,Math.max(0,position-(index+.6)));
 
@@ -41,13 +41,13 @@ function MarkedPage({number,scrollPosition,stage}){
   return()=>{clearTimeout(timer);cancelAnimationFrame(frame)};
  },[scrollPosition,stage]);
  const height=number===6?833:832;
- const mark=number===6?{x1:868,x2:1201,y:737,color:'#61DE28',width:20}:{x1:301,x2:978,y:432,color:'#19714D',width:10};
+ const mark=number===6?{x1:868,x2:1201,y:686,color:'#61DE28',width:20}:{x1:301,x2:978,y:432,color:'#19714D',width:10};
  return <div className="genelec-marked-content" style={{width:`max(100%,calc(100dvh*1280/${height}))`,aspectRatio:`1280/${height}`}}>
-  <img className="genelec-mark-background" src={`/PRODUCT/02%20Genelec/P${number}-Background.svg`} alt=""/>
+  <img className="genelec-mark-background" src={`/PRODUCT/02%20Genelec/P${number}-Background.svg${number===6?'?v=e5fcf583c6d9':''}`} alt=""/>
   <svg className="genelec-marker" viewBox={`0 0 1280 ${height}`} fill="none" aria-hidden="true">
    <line x1={mark.x1} x2={mark.x2} y1={mark.y} y2={mark.y} stroke={mark.color} strokeWidth={mark.width} pathLength="1" strokeDasharray="1" strokeDashoffset={1-amount} visibility={amount===0?'hidden':'visible'}/>
   </svg>
-  <img className="genelec-mark-foreground" src={`/PRODUCT/02%20Genelec/P${number}-Foreground.svg`} alt={`Genelec SONA P${number}`}/>
+  <img className="genelec-mark-foreground" src={`/PRODUCT/02%20Genelec/P${number}-Foreground.svg${number===6?'?v=82463fe74c4e':''}`} alt={`Genelec SONA P${number}`}/>
  </div>;
 }
 

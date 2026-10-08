@@ -1,3 +1,4 @@
+import MobileScrollingBanner from './MobileScrollingBanner.jsx';
 import React, {useEffect,useRef,useState} from 'react';
 import {productStickers} from './ProductHome.jsx';
 
@@ -24,7 +25,7 @@ export default function ProductMobileHome({onOpen,onNavigate,onMenu}){
    <button onClick={()=>onNavigate('Product')} aria-label="Go to home"><img src={asset('Home')} alt=""/></button>
    <button className="product-mobile-about" onClick={()=>onNavigate('About Me')} aria-label="About Me"><img src={asset('About Me')} alt=""/></button>
   </header>
-  <div className="product-mobile-banner" aria-label="Build My Design Stamp"><div><img src={asset('Scrolling Banner')} alt="Build My Design Stamp"/><img src={asset('Scrolling Banner')} alt="" aria-hidden="true"/></div></div>
+  <MobileScrollingBanner text="Build My Design Stamp by Stamp"/>
   <div className="product-mobile-stamps">{stamps.map(([file,project],index)=><button className={`product-mobile-stamp stamp-${index}${activeStamp===file?' stamp-selected':''}`} key={file} aria-label={`Explore ${project}`} onClick={()=>selectStamp(file,project)}>
    <img src={`/PRODUCT/Mobile/Stamps/Black%20&%20White/${encodeURIComponent(file)}.svg`} alt=""/>
    <img className="product-mobile-stamp-color" src={`/PRODUCT/Mobile/Stamps/Colorful/${encodeURIComponent(file)}.svg`} alt="" aria-hidden="true"/>
