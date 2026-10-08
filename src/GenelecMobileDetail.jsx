@@ -4,15 +4,11 @@ const asset=name=>`/PRODUCT/Mobile/02%20Genelec/${encodeURIComponent(name==='P10
 const icon=name=>`/PRODUCT/Mobile/Components/${encodeURIComponent(name)}.svg`;
 function Artwork({name,settled}){
  const ref=useRef(null),[markup,setMarkup]=useState('');
- useEffect(()=>{if(name==='P10')return;const controller=new AbortController();fetch(asset(name),{signal:controller.signal}).then(response=>response.text()).then(setMarkup).catch(()=>{});return()=>controller.abort()},[name]);
+ useEffect(()=>{if(name==='P10')return;const controller=new AbortController();fetch(asset(name),{signal:controller.signal}).then(response=>response.text()).then(svg=>setMarkup(['P1','P2','P3','P9'].includes(name)?svg.replace(/<rect\b[^>]*fill="#19714D"[^>]*\/>/g,''):svg)).catch(()=>{});return()=>controller.abort()},[name]);
  useEffect(()=>{
   if(!markup)return;
   if(name!=='P5')ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio',name==='P6'?'xMidYMax meet':'xMidYMid meet');
   if(name==='P6')ref.current.querySelector('svg')?.setAttribute('viewBox','0 0 375 814');
-  // Use one page background so the artwork has no green rectangle edges.
-  if(['P1','P3'].includes(name)){
-   ref.current.querySelectorAll('rect[fill="#19714D"]').forEach(rect=>rect.setAttribute('fill','none'));
-  }
   const marks=[...ref.current.querySelectorAll('[stroke="#61DE28"]')];
   marks.forEach(mark=>{mark.style.clipPath='inset(0 100% 0 0)';mark.style.transformBox='fill-box'});
   if(!settled)return;
@@ -43,7 +39,7 @@ export default function GenelecMobileDetail({onNavigate,onMenu}){
   {position<.01&&<MobileScrollingBanner text="Build My Design Stamp by Stamp"/>}
   <div ref={scroll} className="kasvu-mobile-scroll kasvu-mobile-paged" onScroll={event=>setPosition(event.currentTarget.scrollTop/event.currentTarget.clientHeight)}>
    <section className="kasvu-mobile-screen kasvu-mobile-cover genelec-mobile-cover"><img className={introReady?'intro-ready':''} src={asset('Intro')} onLoad={event=>event.currentTarget.decode().catch(()=>{}).then(()=>setIntroReady(true))} alt="Genelec SONA project introduction"/></section>
-   {Array.from({length:10},(_,index)=><section className={`kasvu-mobile-screen${index!==4?' genelec-mobile-full-screen':''}`} style={[0,2].includes(index)?{background:'#19714D'}:index===1?{backgroundColor:'#19714D',backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P2-Top-Background.svg")',backgroundPosition:'center top',backgroundSize:'100% 55%',backgroundRepeat:'no-repeat'}:index===3?{backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P4-Background-Fill.svg")',backgroundSize:'cover',backgroundPosition:'center'}:index===8?{backgroundColor:'#19714D',backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P9-Top-Background.svg")',backgroundPosition:'center top',backgroundSize:'100% 55%',backgroundRepeat:'no-repeat'}:undefined} key={index}><Artwork name={`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
+   {Array.from({length:10},(_,index)=><section className={`kasvu-mobile-screen${index!==4?' genelec-mobile-full-screen':''}`} style={[0,2].includes(index)?{background:'#19714D'}:index===1?{backgroundColor:'#19714D',backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P2-Top-Background.svg")',backgroundPosition:'center top',backgroundSize:'100% calc(50% + (23vw + env(safe-area-inset-top, 0px) - max(16px, env(safe-area-inset-bottom, 0px))) / 2)',backgroundRepeat:'no-repeat'}:index===3?{backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P4-Background-Fill.svg")',backgroundSize:'cover',backgroundPosition:'center'}:index===8?{backgroundColor:'#19714D',backgroundImage:'url("/PRODUCT/Mobile/02%20Genelec/P9-Top-Background.svg")',backgroundPosition:'center top',backgroundSize:'100% calc(50% + (23vw + env(safe-area-inset-top, 0px) - max(16px, env(safe-area-inset-bottom, 0px))) / 2)',backgroundRepeat:'no-repeat'}:undefined} key={index}><Artwork name={`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
   </div>
  </section>;
 }
