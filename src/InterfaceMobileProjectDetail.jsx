@@ -11,7 +11,7 @@ function AyyFinalVideo({settled}){
   const timer=setTimeout(()=>media.play().catch(()=>{}),150);
   return()=>{clearTimeout(timer);media.pause();media.muted=true};
  },[settled]);
- return <div className="genelec-mobile-art"><svg viewBox="0 0 375 814" preserveAspectRatio="xMidYMid slice" aria-label="ayy project demonstration">
+ return <div className="genelec-mobile-art"><svg viewBox="0 0 375 814" preserveAspectRatio="xMidYMid meet" aria-label="ayy project demonstration">
   <rect width="375" height="814" fill="#F4F4F4"/>
   <foreignObject x="22" y="97" width="331" height="648"><div xmlns="http://www.w3.org/1999/xhtml" style={{width:'100%',height:'100%',borderRadius:59,overflow:'hidden'}}><video ref={video} src="/UI&UX/Mobile/01%20ayy/Video.mp4" muted loop playsInline preload="metadata" aria-label="ayy app demonstration" style={{display:'block',width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'}}/></div></foreignObject>
  </svg></div>;
@@ -24,7 +24,7 @@ function GlucoraFinalVideo({settled,src='/UI&UX/Mobile/02%20Glucora/Video.mp4',l
   const timer=setTimeout(()=>media.play().catch(()=>{}),150);
   return()=>{clearTimeout(timer);media.pause();media.muted=true};
  },[settled]);
- return <video ref={video} src={src} muted loop playsInline preload="metadata" aria-label={label} style={{display:'block',width:'100%',height:'100%',objectFit:'cover',objectPosition:'center'}}/>;
+ return <video ref={video} src={src} muted loop playsInline preload="metadata" aria-label={label} style={{display:'block',width:'100%',height:'100%',objectFit:'contain',objectPosition:'center'}}/>;
 }
 function GoldenRootUIVideos({settled}){
  const ref=useRef(null);
@@ -35,7 +35,7 @@ function GoldenRootUIVideos({settled}){
   return()=>{clearTimeout(timer);media.forEach(video=>{video.pause();video.muted=true})};
  },[settled]);
  const videos=[['动画一.mp4',87,221],['动画八：单独储存仓.mp4',319,223]];
- return <div ref={ref} className="genelec-mobile-art"><svg viewBox="0 0 375 814" preserveAspectRatio="xMidYMid slice" aria-label="GoldenRoot UI demonstrations"><image href={source('03 GoldenRoot','P2')} width="375" height="814"/>{videos.map(([file,y,height])=><foreignObject key={file} x="12" y={y} width="350" height={height}><div xmlns="http://www.w3.org/1999/xhtml" style={{width:'100%',height:'100%',overflow:'hidden'}}><video src={`/UI&UX/Mobile/03%20GoldenRoot/${encodeURIComponent(file)}`} muted loop playsInline preload="metadata" aria-label={file} style={{width:'100%',height:'100%',display:'block',objectFit:'cover',transform:y===319?'scale(1.06)':'none'}}/></div></foreignObject>)}</svg></div>;
+ return <div ref={ref} className="genelec-mobile-art"><svg viewBox="0 0 375 814" preserveAspectRatio="xMidYMid meet" aria-label="GoldenRoot UI demonstrations"><image href={source('03 GoldenRoot','P2')} width="375" height="814"/>{videos.map(([file,y,height])=><foreignObject key={file} x="12" y={y} width="350" height={height}><div xmlns="http://www.w3.org/1999/xhtml" style={{width:'100%',height:'100%',overflow:'hidden'}}><video src={`/UI&UX/Mobile/03%20GoldenRoot/${encodeURIComponent(file)}`} muted loop playsInline preload="metadata" aria-label={file} style={{width:'100%',height:'100%',display:'block',objectFit:'cover',transform:y===319?'scale(1.06)':'none'}}/></div></foreignObject>)}</svg></div>;
 }
 function Artwork({name,settled,folder,title}){
  const asset=name=>source(folder,name);
@@ -43,7 +43,7 @@ function Artwork({name,settled,folder,title}){
  useEffect(()=>{if((['01 ayy','02 Glucora'].includes(folder)&&name==='P4')||(folder==='03 GoldenRoot'&&['P2','P3'].includes(name)))return;const controller=new AbortController();fetch(asset(name),{signal:controller.signal}).then(response=>response.text()).then(setMarkup).catch(()=>{});return()=>controller.abort()},[name,folder]);
  useEffect(()=>{
   if(!markup)return;
-  if(true)ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid slice');
+  if(true)ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid meet');
   const marks=[...ref.current.querySelectorAll('[stroke="#532F7A"], [stroke="#0037FF"], [stroke="#00FFF7"], [stroke="#E9E034"], [stroke="#757C2E"], [stroke="#8E230B"]')];
   marks.forEach(mark=>{mark.setAttribute('pathLength','1');mark.style.strokeDasharray='1';mark.style.strokeDashoffset='1'});
   if(!settled)return;
@@ -78,8 +78,8 @@ export default function InterfaceMobileProjectDetail({project,onNavigate,onMenu}
   {!((project==='Glucora'&&position>=3.5)||(project==='GoldenRoot'&&position>=2.5))&&<header className="product-mobile-header"><button onClick={onMenu} aria-label="Open navigation"><img src={icon('Hamburger Navigation')} alt=""/></button><button onClick={()=>onNavigate('UI | UX')} aria-label="Back to UI and UX home"><img src={icon('Home')} alt=""/></button><button className="product-mobile-about" onClick={()=>onNavigate('About Me')} aria-label="About Me"><img src={icon('About Me')} alt=""/></button></header>}
   {position<.01&&<MobileScrollingBanner text="Check My Folders"/>}
   <div ref={scroll} className="kasvu-mobile-scroll kasvu-mobile-paged" onScroll={event=>setPosition(event.currentTarget.scrollTop/event.currentTarget.clientHeight)}>
-   <section className="kasvu-mobile-screen kasvu-mobile-cover interface-mobile-project-cover"><img className="interface-mobile-cover-background" src={asset('Background')} alt=""/><img style={{width:`min(88.8vw,calc((100dvh - 27.467vw - 28px)*${introRatio}))`}} className={introReady?'intro-ready':''} src={asset('Intro')} onLoad={event=>event.currentTarget.decode().catch(()=>{}).then(()=>setIntroReady(true))} alt={`${title} project introduction`}/></section>
-   {Array.from({length:count},(_,index)=><section className={`kasvu-mobile-screen genelec-mobile-full-screen`} key={index}><Artwork folder={folder} title={title} name={pages?.[index]||`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
+   <section className="kasvu-mobile-screen kasvu-mobile-cover interface-mobile-project-cover"><img className="interface-mobile-cover-background" src={asset('Background')} alt=""/><img style={{width:`min(88.8vw,calc((var(--mobile-visible-height, 100dvh) - 27.467vw - 28px)*${introRatio}))`}} className={introReady?'intro-ready':''} src={asset('Intro')} onLoad={event=>event.currentTarget.decode().catch(()=>{}).then(()=>setIntroReady(true))} alt={`${title} project introduction`}/></section>
+   {Array.from({length:count},(_,index)=><section className={`kasvu-mobile-screen genelec-mobile-full-screen`} style={folder==='01 ayy'&&index===count-1?{background:'#F4F4F4'}:folder==='04 Old Market Hall'&&index<count-1?{background:'#F0EBE8'}:undefined} key={index}><Artwork folder={folder} title={title} name={pages?.[index]||`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
   </div>
  </section>;
 }

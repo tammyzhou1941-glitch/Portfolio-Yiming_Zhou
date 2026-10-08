@@ -7,7 +7,7 @@ function Artwork({name,settled}){
  useEffect(()=>{const controller=new AbortController();fetch(asset(name),{signal:controller.signal}).then(response=>response.text()).then(setMarkup).catch(()=>{});return()=>controller.abort()},[name]);
  useEffect(()=>{
   if(!markup)return;
-  if(name!=='P1')ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid slice');
+  if(name!=='P1')ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid meet');
   const marks=[...ref.current.querySelectorAll('[stroke="#FFF990"], [stroke="#D1D1D1"]')];
   marks.forEach(mark=>{mark.setAttribute('pathLength','1');mark.style.strokeDasharray='1';mark.style.strokeDashoffset='1'});
   if(!settled)return;

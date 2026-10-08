@@ -10,7 +10,7 @@ function Artwork({name,settled,folder,title}){
  useEffect(()=>{if(folder==='05 GoldenRoot'&&name==='P4')return;const controller=new AbortController();fetch(asset(name),{signal:controller.signal}).then(response=>response.text()).then(setMarkup).catch(()=>{});return()=>controller.abort()},[name,folder]);
  useEffect(()=>{
   if(!markup)return;
-  if(name!=='P1'||['04 Altafuse','05 GoldenRoot','06 PeachBlossom'].includes(folder))ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid slice');
+  if(name!=='P1'||['04 Altafuse','05 GoldenRoot','06 PeachBlossom'].includes(folder))ref.current.querySelector('svg')?.setAttribute('preserveAspectRatio','xMidYMid meet');
   const marks=[...ref.current.querySelectorAll('[stroke="#61DE28"], [stroke="#D1D1D1"], [stroke="#757C2E"], [stroke="#F1DCDB"], [stroke="#FFF990"]')];
   marks.forEach(mark=>{mark.setAttribute('pathLength','1');mark.style.strokeDasharray='1';mark.style.strokeDashoffset='1'});
   if(!settled)return;
@@ -19,7 +19,7 @@ function Artwork({name,settled,folder,title}){
   return()=>{clearTimeout(timer);animations.forEach(animation=>animation.cancel())};
  },[markup,settled]);
  if(folder==='05 GoldenRoot'&&name==='P4')return <GoldenRootMobileVideos settled={settled}/>;
- return <div ref={ref} className="genelec-mobile-art" style={folder==='04 Altafuse'&&name==='P6'?{transform:'scale(.95)',transformOrigin:'center'}:undefined} role="img" aria-label={`${title} ${name}`} dangerouslySetInnerHTML={{__html:markup}}/>;
+ return <div ref={ref} className="genelec-mobile-art" style={folder==='04 Altafuse'&&name==='P5'?{transform:'translateY(-15px) scale(1.1)',transformOrigin:'center'}:folder==='04 Altafuse'&&name==='P6'?{transform:'scale(.95)',transformOrigin:'center'}:undefined} role="img" aria-label={`${title} ${name}`} dangerouslySetInnerHTML={{__html:markup}}/>;
 }
 export default function ProductMobileProjectDetail({project,onNavigate,onMenu}){
  const {folder,title,count,introRatio}=projects[project];
@@ -42,8 +42,8 @@ export default function ProductMobileProjectDetail({project,onNavigate,onMenu}){
   <header className="product-mobile-header"><button onClick={onMenu} aria-label="Open navigation"><img src={icon('Hamburger Navigation')} alt=""/></button><button onClick={()=>onNavigate('Product')} aria-label="Go to home"><img src={icon('Home')} alt=""/></button><button className="product-mobile-about" onClick={()=>onNavigate('About Me')} aria-label="About Me"><img src={icon('About Me')} alt=""/></button></header>
   {position<.01&&<MobileScrollingBanner text="Build My Design Stamp by Stamp"/>}
   <div ref={scroll} className="kasvu-mobile-scroll kasvu-mobile-paged" onScroll={event=>setPosition(event.currentTarget.scrollTop/event.currentTarget.clientHeight)}>
-   <section className="kasvu-mobile-screen kasvu-mobile-cover generic-product-mobile-cover"><img style={{width:`min(88.8vw,calc((100dvh - 27.467vw - 28px)*${introRatio}))`}} className={introReady?'intro-ready':''} src={asset('Intro')} onLoad={event=>event.currentTarget.decode().catch(()=>{}).then(()=>setIntroReady(true))} alt={`${title} project introduction`}/></section>
-   {Array.from({length:count},(_,index)=><section className={`kasvu-mobile-screen${index>0||['Altafuse','GoldenRoot','SM-Little Peach Blossom'].includes(project)?' genelec-mobile-full-screen':''}`} key={index}><Artwork folder={folder} title={title} name={`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
+   <section className="kasvu-mobile-screen kasvu-mobile-cover generic-product-mobile-cover"><img style={{width:`min(88.8vw,calc((var(--mobile-visible-height, 100dvh) - 27.467vw - 28px)*${introRatio}))`}} className={introReady?'intro-ready':''} src={asset('Intro')} onLoad={event=>event.currentTarget.decode().catch(()=>{}).then(()=>setIntroReady(true))} alt={`${title} project introduction`}/></section>
+   {Array.from({length:count},(_,index)=><section className={`kasvu-mobile-screen${index>0||['Altafuse','GoldenRoot','SM-Little Peach Blossom'].includes(project)?' genelec-mobile-full-screen':''}`} style={project==='Altafuse'&&index===1?{background:'#EEEFEF'}:project==='Altafuse'&&index===2?{background:'#EDEEEE'}:project==='SM-Little Peach Blossom'&&[0,1,2,4,5,6].includes(index)?{background:'#EEEFEF'}:undefined} key={index}><Artwork folder={folder} title={title} name={`P${index+1}`} settled={Math.abs(position-index-1)<.003}/></section>)}
   </div>
  </section>;
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useSiteVideoAudio from './useSiteVideoAudio.js';
 import useMobileFullscreen from './useMobileFullscreen.js';
+import useMobileViewport from './useMobileViewport.js';
 import { createRoot } from 'react-dom/client';
 import { X, ArrowUpRight, ArrowRight } from 'lucide-react';
 import './style.css';
@@ -108,6 +109,7 @@ function InterfaceHome({onNavigate,onMenu,onDetailChange}){
  </section>;
 }
 function App(){
+ useMobileViewport();
  useMobileFullscreen();
  useSiteVideoAudio();
  const [mobileViewport,setMobileViewport]=useState(()=>window.matchMedia('(max-width:640px)').matches);

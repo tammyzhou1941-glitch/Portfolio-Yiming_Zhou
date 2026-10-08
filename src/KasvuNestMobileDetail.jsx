@@ -17,9 +17,9 @@ function ProjectPage({name,settled}){
   return()=>{cancelled=true;clearTimeout(timer);media.forEach(video=>{video.pause();video.muted=true})};
  },[settled]);
  const [width,height]=dimensions[name];
- return <div ref={element} className="kasvu-mobile-page-art" style={['P6','P7'].includes(name)?{width:`max(100vw,calc((100dvh - ${name==='P7'?15:0}px)*${width}/${height}))`,height:`max(calc(100dvh - ${name==='P7'?15:0}px),calc(100vw*${height}/${width}))`,flexShrink:0}:{aspectRatio:`${width}/${height}`}}>
+ return <div ref={element} className="kasvu-mobile-page-art" style={{aspectRatio:`${width}/${height}`,transform:name==='P6'?'translateY(-15px) scale(1.21)':['P3','P4'].includes(name)?'scale(1.1)':undefined,transformOrigin:'center'}}>
   {['P1','P2'].includes(name)?<KasvuMobileMarkedArt name={name} alt={`KasvuNest ${name}`} settled={ready}/>:<img src={asset(name==='P7'?'P7-Corrected':name)} alt={`KasvuNest ${name}`}/>}
-  {(videos[name]||[]).map(([file,x,y,w,h,controls])=><div key={file} className={`kasvu-mobile-video-frame${['P3','P4'].includes(name)?' video-enlarged':''}`} style={{left:`${x/width*100}%`,top:name==='P7'?`calc(${y/height*100}% + 15px)`:`${y/height*100}%`,width:`${w/width*100}%`,height:`${h/height*100}%`}}><video src={`/PRODUCT/Mobile/01%20KasvuNest/Video/${encodeURIComponent(file)}`} muted loop playsInline controls={Boolean(controls)} preload="metadata" aria-label={file.replace('.mp4','')}/></div>)}
+  {(videos[name]||[]).map(([file,x,y,w,h,controls])=><div key={file} className={`kasvu-mobile-video-frame${['P3','P4'].includes(name)?' video-enlarged':''}`} style={{left:`${x/width*100}%`,top:name==='P7'?`calc(${y/height*100}% + 15px)`:`${y/height*100}%`,width:`${w/width*100}%`,height:`${h/height*100}%`,...(name==='P7'?{left:'50%',top:'50%',transform:'translate(-50%,-50%) scale(1.1)',transformOrigin:'center'}:{})}}><video src={`/PRODUCT/Mobile/01%20KasvuNest/Video/${encodeURIComponent(file)}`} muted loop playsInline controls={Boolean(controls)} preload="metadata" aria-label={file.replace('.mp4','')}/></div>)}
   {name==='P7'&&needsSound&&<button className="kasvu-mobile-enable-sound" onClick={()=>{const video=element.current.querySelector('video');video.muted=false;video.volume=1;video.play().then(()=>setNeedsSound(false)).catch(()=>setNeedsSound(true))}}>开启声音</button>}
  </div>;
 }
