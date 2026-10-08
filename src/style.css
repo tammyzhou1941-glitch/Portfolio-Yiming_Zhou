@@ -324,6 +324,7 @@
 @media(max-width:640px){.other-canvas{width:100%;margin:0}.other-canvas .other-board{width:100%;margin:0}}
 .about-uploaded-canvas{position:relative;aspect-ratio:1280/832;width:100%;margin-top:-100px}
 .about-uploaded-card{position:absolute;display:block;height:auto;user-select:none;transform:scale(.855);transform-origin:center}
+@media(min-width:641px){.about-profile-card>.about-card-image{filter:drop-shadow(3px 4px 2px #0003)}}
 @media(max-width:640px){.about-uploaded-canvas{margin-top:0}}
 .about-card-image{display:block;width:100%;height:auto}
 .about-know-more{position:absolute;left:33.12%;top:87.17%;width:29.87%;padding:0;background:transparent;line-height:0;border-radius:3px}
